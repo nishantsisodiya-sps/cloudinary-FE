@@ -1,0 +1,14 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<form (submit)="handleSubmit($event)">
+  <div>
+    <label for="video">Video:</label><br />
+    <input
+      type="file"
+      accept="video/*"
+      id="video"
+      (change)="setVideo($event)"
+    />
+  </div>
+  <br />
+  <button type="submit">Upload</button>
+</form>
