@@ -8,13 +8,15 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadvideoComponent } from './components/uploadvideo/uploadvideo.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EditComponent } from './components/edit/edit.component';
 
 interface NgxSpinnerConfig {
   type?: string;
 }
 
 @NgModule({
-  declarations: [AppComponent, UploadvideoComponent],
+  declarations: [AppComponent, UploadvideoComponent, EditComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +25,7 @@ interface NgxSpinnerConfig {
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

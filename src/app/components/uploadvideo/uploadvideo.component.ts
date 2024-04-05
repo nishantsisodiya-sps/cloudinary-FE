@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CloudinaryserviceService } from 'src/app/services/cloudinaryservice.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from '../../../../environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-uploadvideo',
@@ -11,10 +12,11 @@ import { environment } from '../../../../environment';
 })
 export class UploadvideoComponent {
   selectedVideoFile: File | null = null;
-
+  loading: boolean = true;
   constructor(
     private cloud: CloudinaryserviceService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private _snackBar: MatSnackBar
   ) {}
 
   setVideo(event: any) {
@@ -83,8 +85,12 @@ export class UploadvideoComponent {
 
           this.cloud.sendToDB(videoUrl).subscribe((res) => {
             if (res) {
-              console.log('Successfully sent to DB');
               this.spinner.hide();
+              this._snackBar.open('Successfully sent to DB', '', {
+                duration: 3000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right',
+              });
             }
           });
         }
